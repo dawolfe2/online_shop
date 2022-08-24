@@ -1,0 +1,55 @@
+.Body{
+}
+
+.Main{
+  }
+
+.Instructions{
+    font-size: 30px;
+}
+
+.item{
+    display: flex;
+}
+
+.itemtext{
+    margin-bottom: 0px;
+    font-size: 25px;
+}
+
+.btns{
+    display: inline-flex;
+    flex-basis: 8rem;
+    border-style: groove;
+    border-radius: 12px;
+    padding: 0px 12px;
+    margin-left: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.count{
+    font-size: 20px;
+}
+
+.pos{
+    cursor: pointer;
+    text-align: center;
+    font-size: 15px;
+    margin-right: auto;
+}
+
+.neg{
+    cursor: pointer;
+    text-align: center;
+    font-size: 15px;
+    margin-left: auto;
+}
+
+.totaltext{
+    font-size: 20px;
+    margin-left: 8px;
+    margin-bottom: 10px;
+}
+

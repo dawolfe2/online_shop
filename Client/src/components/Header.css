@@ -1,0 +1,37 @@
+.header{
+    margin: 0;
+    display: flex;
+    padding: 0px 40px;
+    box-shadow: 0px 3px 7.5px;
+    align-items: center;
+}
+
+.headerlogo{
+    width: 75px;
+    height: 75px;
+}
+
+.storename{
+    margin: 30px;
+    font-size: 50px;
+}
+
+.navmenu{
+    margin-left: 650px;
+    font-size: 20px;
+}
+
+.navmenu > .navlink {
+    display: inline-block;
+    margin: 25px;
+}
+
+.cart{
+    font-size: 25px;
+    margin-left: auto;
+    padding: 0px 20px;
+}
+
+.total{
+    font-size: 25px;
+}
