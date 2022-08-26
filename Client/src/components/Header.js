@@ -1,17 +1,19 @@
 import React from 'react';
 import logo from '../images/D_logo.PNG'
 import './Header.css'
-import { Nav, NavLink, NavMenu } 
+import { NavLink, NavMenu } 
     from "./NavbarElements";
+import Axios from 'axios'
 
 export default class Header extends React.Component{
 
   state ={
-    total: 12.50
+    username: "John",
+    total: 0
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.setState({ total: 50 }), 1000);
+    this.interval = setInterval(() => this.setState({ total: this.state.total }), 1000);
   }
   componentWillUnmount() {
     clearInterval(this.interval);

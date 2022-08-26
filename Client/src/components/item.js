@@ -1,5 +1,6 @@
 import React from 'react';
 import './Body.css'
+import Axios from 'axios'
 
 //class for shopping item and calculations for quantity and price
 //also has buttons for incrementing to cart
@@ -12,8 +13,17 @@ export default class Item extends React.Component{
     }
 
     plus = () =>{
-        this.setState({ count: (this.state.count + 1) })
-        this.setState({ total: (parseInt(this.state.total) + parseInt(this.props.Price)) })
+
+      this.setState({ count: (this.state.count + 1) })
+      this.setState({ total: (parseInt(this.state.total) + parseInt(this.props.Price)) })
+
+      Axios.post("http://localhost:3001/api/insert", {
+      username: "Dan", 
+      total: this.props.price,
+      }).then(()=>{
+      alert("Success!")
+      });
+       
     }
     
     minus = () =>{
