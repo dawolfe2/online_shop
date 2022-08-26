@@ -19,7 +19,7 @@ export default class Item extends React.Component{
 
       Axios.post("http://localhost:3001/api/insert", {
       username: "Dan", 
-      total: this.props.price,
+      total: this.props.Price,
       }).then(()=>{
       alert("Success!")
       });

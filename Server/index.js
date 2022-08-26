@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.post('/api/insert', (req, res) => {
     const username = req.body.username;
+    console.log(username);
     const total = req.body.total;
+    console.log(total);
     const sqlInsert = "INSERT INTO session (username, total) VALUES (?,?)";
     db.query(sqlInsert, [username, total], (err, result)=>{
     console.log(result);
