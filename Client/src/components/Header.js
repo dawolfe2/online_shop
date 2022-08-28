@@ -12,8 +12,8 @@ import {
 export default class Header extends React.Component{
 
   state ={
-    id: 0,
-    username: "",
+    id: 1,
+    username: "Dan",
     password: "",
     total: 0
   }
@@ -21,7 +21,7 @@ export default class Header extends React.Component{
   componentDidMount() {
     this.interval = setInterval(() => {
       var self = this;
-    Axios.post("http://localhost:3001/api/total", {
+      Axios.post("http://localhost:3001/api/total", {
         id: this.state.id, 
         }).then(function(response){
           let newtotal = parseFloat(response.data.total);

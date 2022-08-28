@@ -61,11 +61,10 @@ app.post('/api/total', (req, res) => {
     });
 });
 
-app.post('/api/checkuser', (req, res) => {
+app.post('/api/newuser', (req, res) => {
     const username = req.body.username;
-    const sqlGetUser = "SELECT id FROM session WHERE username = ?";
-    db.query(sqlGetUser, [username], (err, result)=>{
-        res.send({id:id});
+    const sqlGetUser = "UPDATE session SET total = 0 WHERE id = 1";
+    db.query(sqlGetUser, (err, result)=>{
     });
 });
 

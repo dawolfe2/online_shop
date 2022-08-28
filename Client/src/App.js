@@ -3,11 +3,11 @@ import Header from './components/Header.js'
 import Body from './components/Body.js'
 import About from './components/about/about.js'
 import Home from './components/home/home.js'
-import { BrowserRouter as Router, Routes, Route}
-    from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Contact from './components/contact/contact.js'
 
  function App(){
+    let user = false
   return(
       <Router>
          <Header/>
