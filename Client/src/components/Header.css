@@ -17,13 +17,13 @@
 }
 
 .navmenu{
+    display: flex;
     margin-left: 700px;
     font-size: 20px;
 }
 
 .navmenu > .navlink {
-    display: inline-block;
-    margin: 20px;
+    margin-left: 20px;
 }
 
 .cart{

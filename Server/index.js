@@ -15,15 +15,50 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post('/api/insert', (req, res) => {
-    const username = req.body.username;
-    console.log(username);
-    const total = req.body.total;
-    console.log(total);
-    const sqlInsert = "INSERT INTO session (username, total) VALUES (?,?)";
-    db.query(sqlInsert, [username, total], (err, result)=>{
-    console.log(result);
-    });   
+app.post('/api/add', (req, res) => {
+    const id = req.body.id;
+    let cost = req.body.cost;
+    let total = 0;
+
+    const sqlGetTtoal = "SELECT total FROM session WHERE id = ?";
+    db.query(sqlGetTtoal, [id], (err, result)=>{
+
+        total = parseFloat(result[0].total) + parseFloat(cost);
+
+        const sqlUpdate = "UPDATE session SET total = ? WHERE id = ?";
+        db.query(sqlUpdate, [total, id], (err, result)=>{
+        });   
+
+    }); 
+});
+
+app.post('/api/subtract', (req, res) => {
+    const id = req.body.id;
+    let cost = req.body.cost;
+    let total = 0;
+
+    const sqlGetTtoal = "SELECT total FROM session WHERE id = ?";
+    db.query(sqlGetTtoal, [id], (err, result)=>{
+
+        total = parseFloat(result[0].total) - parseFloat(cost);
+
+        const sqlUpdate = "UPDATE session SET total = ? WHERE id = ?";
+        db.query(sqlUpdate, [total, id], (err, result)=>{
+        });   
+
+    }); 
+});
+
+app.post('/api/total', (req, res) => {
+    const id = req.body.id;
+    let total = 0;
+
+    const sqlGetTtoal = "SELECT total FROM session WHERE id = ?";
+    db.query(sqlGetTtoal, [id], (err, result)=>{
+        total = parseFloat(result[0].total); 
+        console.log(total)
+        return total;
+    }); 
 });
 
 app.listen(3001, () => {

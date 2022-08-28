@@ -11,7 +11,7 @@ import Contact from './components/contact/contact.js'
       <Router>
          <Header/>
          <Routes>
-            <Route path='/Body' element={<Body />} />
+            <Route path='/' element={<Body />} />
             <Route path='/about' element={<About/>} />
             <Route path='/contact' element={<Contact/>} />
           </Routes>
