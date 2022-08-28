@@ -57,8 +57,8 @@ app.post('/api/total', (req, res) => {
     db.query(sqlGetTtoal, [id], (err, result)=>{
         total = parseFloat(result[0].total); 
         console.log(total)
-        return total;
-    }); 
+        res.send({total:total});
+    });
 });
 
 app.listen(3001, () => {

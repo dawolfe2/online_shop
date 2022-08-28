@@ -16,27 +16,21 @@ export default class Header extends React.Component{
     total: 0
   }
 
-   componentDidMount() {
-    this.interval = setInterval(() => 
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      var self = this;
     Axios.post("http://localhost:3001/api/total", {
-      id: 1, 
-      }).then(function(response){
-        this.state.total = parseFloat(response[0].total);
-      })
-    , 3000);
+        id: 1, 
+        }).then(function(response){
+          let newtotal = parseFloat(response.data.total);
+          console.log(newtotal);
+          self.setState({ total: newtotal})
+        })}, 500);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
-  // componentDidMount() {
-  //   this.interval = setInterval(() => this.setState({ total: this.state.total}), 500);
-  // }
-
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
 
   render(){
     return(
@@ -45,7 +39,7 @@ export default class Header extends React.Component{
           <h2 className="storename">Dan's Grocery Store</h2>
           <div className="navmenu">
             <p className="navlink">
-              <Link to="/">Shop</Link>
+              <Link to="/store">Shop</Link>
             </p>
             <p className="navlink">
               <Link to="/about">About</Link>
