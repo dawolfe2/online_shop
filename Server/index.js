@@ -56,7 +56,6 @@ app.post('/api/total', (req, res) => {
     const sqlGetTotal = "SELECT total FROM session WHERE id = ?";
     db.query(sqlGetTotal, [id], (err, result)=>{
         total = parseFloat(result[0].total); 
-        console.log(total)
         res.send({total:total});
     });
 });
