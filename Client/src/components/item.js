@@ -8,6 +8,7 @@ import Axios from 'axios'
 export default class Item extends React.Component{
 
     state ={
+        id: 0,
         count: 0,
         total: 0
     }

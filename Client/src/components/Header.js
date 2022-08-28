@@ -12,7 +12,9 @@ import {
 export default class Header extends React.Component{
 
   state ={
-    username: "John",
+    id: 0,
+    username: "",
+    password: "",
     total: 0
   }
 
@@ -20,7 +22,7 @@ export default class Header extends React.Component{
     this.interval = setInterval(() => {
       var self = this;
     Axios.post("http://localhost:3001/api/total", {
-        id: 1, 
+        id: this.state.id, 
         }).then(function(response){
           let newtotal = parseFloat(response.data.total);
           console.log(newtotal);
@@ -45,7 +47,7 @@ export default class Header extends React.Component{
               <Link to="/about">About</Link>
             </p>
             <p className="navlink">
-              <Link to="/users">Contact</Link>
+              <Link to="/contact">Contact</Link>
             </p>
           </div>
           <h4 className="cart">Cart:</h4>

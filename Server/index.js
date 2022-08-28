@@ -53,11 +53,19 @@ app.post('/api/total', (req, res) => {
     const id = req.body.id;
     let total = 0;
 
-    const sqlGetTtoal = "SELECT total FROM session WHERE id = ?";
-    db.query(sqlGetTtoal, [id], (err, result)=>{
+    const sqlGetTotal = "SELECT total FROM session WHERE id = ?";
+    db.query(sqlGetTotal, [id], (err, result)=>{
         total = parseFloat(result[0].total); 
         console.log(total)
         res.send({total:total});
+    });
+});
+
+app.post('/api/checkuser', (req, res) => {
+    const username = req.body.username;
+    const sqlGetUser = "SELECT id FROM session WHERE username = ?";
+    db.query(sqlGetUser, [username], (err, result)=>{
+        res.send({id:id});
     });
 });
 
