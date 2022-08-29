@@ -10,7 +10,8 @@ export default class Item extends React.Component{
     state ={
         id: 1,
         count: 0,
-        total: 0
+        total: 0,
+        username: "Dan"
     }
 
     plus = () =>{

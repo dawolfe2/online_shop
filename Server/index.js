@@ -53,7 +53,6 @@ app.post('/api/subtract', (req, res) => {
 app.post('/api/total', (req, res) => {
     const id = req.body.id;
     let total = 0;
-
     const sqlGetTotal = "SELECT total FROM session WHERE id = ?";
     db.query(sqlGetTotal, [id], (err, result)=>{
         total = parseFloat(result[0].total); 
@@ -64,26 +63,24 @@ app.post('/api/total', (req, res) => {
 app.post('/api/checkuser', (req, res) => {
     let id = 1
     const username = req.body.username;
-    console.log(username)
-    const sqlGetUser = "SELECT id,password FROM session WHERE username = ?";
+    const sqlGetUser = "SELECT id,password FROM session WHERE username = (?)";
     db.query(sqlGetUser, [username], (err, result)=>{
-        if (result && res.length > 0){
+        if (result && result.length > 0){
             id = parseInt(result[0].id)
-            console.log(id)
             res.send({id:id});
+        }
+        else{
+            res.send({});
         }
     });
 });
 
 app.post('/api/newuser', (req, res) => {
-    let id = 1
     const username = req.body.username;
-    const password = req.body.passwsord;
-    const sqlGetUser = "INSERT INTO session (username, password) VALUES (?, ?)";
-    db.query(sqlGetUser, [username, password], (err, result)=>{
-            id = parseInt(result[0].id)
-            console.log(id)
-            res.send({id:id});
+    const password = req.body.password;
+    total = 0;
+    const sqlGetUser = "INSERT INTO session (username, total, password) VALUES (?, ?, ?)";
+    db.query(sqlGetUser, [username, total, password], (err, result)=>{
     });
 });
 

@@ -7,6 +7,7 @@ import {
     Route,
     Link
   } from 'react-router-dom';
+import Header from '../Header.js'
 
 export default class Home extends React.Component{
  
@@ -26,19 +27,19 @@ export default class Home extends React.Component{
             password: password,
             }).then(function(response){
             if(response.data.id && response.data.id > 1){
-                self.setState({id : response.data.id})
                 self.setState({username : username})
                 self.setState({password : password})
+                Header.state.username = username
             }
             else{
-                Axios.post("http://localhost:3001/api/newuser", {
-                username: username, 
-                password: password,
-            }).then.then(function(response){
-                self.setState({id : response.data.id})
-                self.setState({username : username})
-                self.setState({password : password})
-            })
+                Axios.post("http://localhost:3001/api/newsuer", {
+                    username: username, 
+                    password: password,
+                }).then(function(response){
+                    self.setState({username : username})
+                    self.setState({password : password})
+                    Header.state.username = username
+                })
         }
     })}
 
@@ -46,11 +47,11 @@ export default class Home extends React.Component{
     return(
         <div className="log-form">
             <h2 className="loginheader">Login to your account</h2>
-            <form>
+            <div className="form">
                 <input id = "user" type="text" title="username" placeholder="username" />
                 <input id = "pass" type="text" title="password" placeholder="password" />
-                <Link to="/store" onClick={this.login} className="submit" type="submit">Login</Link>
-            </form>
+                <button onClick={this.login} className="btn" type="submit">Login</button>
+            </div>
         </div>
         )}
     }

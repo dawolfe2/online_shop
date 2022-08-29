@@ -13,8 +13,8 @@ export default class Header extends React.Component{
 
   state ={
     id: 1,
-    username: "",
-    password: "",
+    username: "Dan",
+    password: "asdf",
     total: 0
   }
 
