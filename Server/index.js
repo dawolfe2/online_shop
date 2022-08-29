@@ -3,6 +3,7 @@ const app = express()
 const mysql = require('mysql')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const e = require('express')
 
 const db = mysql.createPool({
     host: 'localhost',
@@ -60,10 +61,29 @@ app.post('/api/total', (req, res) => {
     });
 });
 
-app.post('/api/newuser', (req, res) => {
+app.post('/api/checkuser', (req, res) => {
+    let id = 1
     const username = req.body.username;
-    const sqlGetUser = "UPDATE session SET total = 0 WHERE id = 1";
-    db.query(sqlGetUser, (err, result)=>{
+    console.log(username)
+    const sqlGetUser = "SELECT id,password FROM session WHERE username = ?";
+    db.query(sqlGetUser, [username], (err, result)=>{
+        if (result && res.length > 0){
+            id = parseInt(result[0].id)
+            console.log(id)
+            res.send({id:id});
+        }
+    });
+});
+
+app.post('/api/newuser', (req, res) => {
+    let id = 1
+    const username = req.body.username;
+    const password = req.body.passwsord;
+    const sqlGetUser = "INSERT INTO session (username, password) VALUES (?, ?)";
+    db.query(sqlGetUser, [username, password], (err, result)=>{
+            id = parseInt(result[0].id)
+            console.log(id)
+            res.send({id:id});
     });
 });
 

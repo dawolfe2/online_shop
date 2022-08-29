@@ -13,7 +13,7 @@ export default class Header extends React.Component{
 
   state ={
     id: 1,
-    username: "Dan",
+    username: "",
     password: "",
     total: 0
   }
@@ -22,10 +22,9 @@ export default class Header extends React.Component{
     this.interval = setInterval(() => {
       var self = this;
       Axios.post("http://localhost:3001/api/total", {
-        id: this.state.id, 
+        id: self.state.id, 
         }).then(function(response){
           let newtotal = parseFloat(response.data.total);
-          console.log(newtotal);
           self.setState({ total: newtotal})
         })}, 500);
   }

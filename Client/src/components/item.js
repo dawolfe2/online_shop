@@ -17,19 +17,21 @@ export default class Item extends React.Component{
 
       this.setState({ count: (this.state.count + 1) })
       this.setState({ total: (parseInt(this.state.total) + parseInt(this.props.Price)) })
+      var self = this;
       Axios.post("http://localhost:3001/api/add", {
-      id: 1, 
+      id: self.state.id, 
       cost: this.props.Price,
       }) 
     }
     
     minus = () =>{
+        var self = this;
         if(this.state.count!=0){
             this.setState({ count: (this.state.count - 1) })
             this.setState({ total: (parseInt(this.state.total) - parseInt(this.props.Price))})
 
             Axios.post("http://localhost:3001/api/subtract", {
-            id: 1, 
+            id: self.state.id, 
             cost: this.props.Price,
       }) 
         }
