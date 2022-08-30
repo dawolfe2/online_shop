@@ -39,6 +39,7 @@ export default class Item extends React.Component{
     }
 
   render(){
+
     return(
       <div className= "item">
         <h4 className = "itemtext">{this.props.Item}: ${this.props.Price}</h4>
