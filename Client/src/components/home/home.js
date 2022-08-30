@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './home.css'
 import Axios from 'axios'
 import {
@@ -8,50 +8,92 @@ import {
     Link
   } from 'react-router-dom';
 import Header from '../Header.js'
+import { useNavigate } from "react-router-dom";
 
-export default class Home extends React.Component{
+export default function Home(){
  
-    state ={
-        id: 1,
-        username: "",
-        password: "",
-        total: 0
+        let navigate = useNavigate();
+
+        const [id, setId] = useState("");
+        const [username, setUsername] = useState("");
+        const [password, setPassword] = useState("");
+        const [total, setTotal] = useState("");
+        const [loggedin, setLoggedin] = useState("");
+
+        const [usernameReg, setUsernameReg] = useState("");
+        const [passwordReg, setPasswordReg] = useState("");
+
+        const [usernameLog, setUsernameLog] = useState("");
+        const [passwordLog, setPasswordLog] = useState("");
+
+        Axios.defaults.withCredentials = true;
+
+      const login = () => {
+        console.log("asdf")
+        if(usernameLog.length > 0 && passwordLog.length > 0){
+            Axios.post("http://localhost:3001/api/login", {   
+                username: usernameLog, 
+                password: passwordLog,
+            }).then(function(response){
+                if (response.data.message){
+                    setLoggedin("Incorrect username or password.");
+                }
+                else{
+                    setLoggedin("Logged In!");
+                    setId(response.data[0].id);
+                    setUsername(response.data[0].username);
+                    setPassword(response.data[0].password);
+                    setTotal(response.data[0].total);
+                    navigate('/store');
+                }
+            })
+        }
       }
 
-    login(){
-        var self = this;
-        let username = document.getElementById("user").value;
-        let password = document.getElementById("pass").value;
-        Axios.post("http://localhost:3001/api/checkuser", {
-            username: username, 
-            password: password,
-            }).then(function(response){
-            if(response.data.id && response.data.id > 1){
-                self.setState({username : username})
-                self.setState({password : password})
-                Header.state.username = username
-            }
-            else{
-                Axios.post("http://localhost:3001/api/newsuer", {
-                    username: username, 
-                    password: password,
-                }).then(function(response){
-                    self.setState({username : username})
-                    self.setState({password : password})
-                    Header.state.username = username
-                })
+     const register = () => {
+        if(usernameReg.length > 0 && passwordReg.length > 0){
+            Axios.post("http://localhost:3001/api/register", {
+                username: usernameReg, 
+                password: passwordReg,
+            })
         }
-    })}
+        else{
+            setLoggedin("Invalid username and password");
+        }
+        
+    }
 
-    render(){
+    useEffect(()=> {
+        Axios.get("http://localhost:3001/api/login").then((response)=>{
+            if(response.data.loggedIn == true){
+                setLoggedin("Logged In");
+            }
+        })
+    }, [])
+
     return(
         <div className="log-form">
             <h2 className="loginheader">Login to your account</h2>
             <div className="form">
-                <input id = "user" type="text" title="username" placeholder="username" />
-                <input id = "pass" type="text" title="password" placeholder="password" />
-                <button onClick={this.login} className="btn" type="submit">Login</button>
+                <input id = "loguser" type="text" title="username" placeholder="username" onChange={(e) => {
+                    setUsernameLog(e.target.value);
+                }}/>
+                <input id = "logpass" type="text" title="password" placeholder="password" onChange={(e) => {
+                    setPasswordLog(e.target.value);
+                }}/>
+                <button onClick={login} className="btn" type="submit">Login</button>
             </div>
+            <h2 className="loginheader">Register new account</h2>
+            <div className="form">
+                <input id = "reguser" type="text" title="username" placeholder="username" onChange={(e) => {
+                    setUsernameReg(e.target.value);
+                }}/>
+                <input id = "regpass" type="text" title="password" placeholder="password" onChange={(e) => {
+                    setPasswordReg(e.target.value);
+                }}/>
+                <button onClick={register} className="btn" type="submit">Register</button>
+            </div>
+            <h2 className="logstatus">{loggedin}</h2>
         </div>
-        )}
-    }
+    )
+}

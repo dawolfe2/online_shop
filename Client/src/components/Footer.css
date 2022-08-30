@@ -1,0 +1,8 @@
+.footerbot{
+    height: 35px; 
+    position: fixed; 
+    bottom:0%;
+    width:100%; 
+    background-color: #150552; 
+    opacity: 1;
+}

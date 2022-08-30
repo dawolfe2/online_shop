@@ -4,6 +4,9 @@ const mysql = require('mysql')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const e = require('express')
+const cookieParser = require('cookie-parser')
+const session = require("express-session")
+
 
 const db = mysql.createPool({
     host: 'localhost',
@@ -12,9 +15,26 @@ const db = mysql.createPool({
     database: 'online_shop',
 })
 
-app.use(cors());
+
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true
+}));
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(cookieParser())
+app.use(session({
+    key: "userId",
+    secret: "mysecretword",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 60 * 60 * 24,
+    },
+}))
+
 
 app.post('/api/add', (req, res) => {
     const id = req.body.id;
@@ -60,22 +80,36 @@ app.post('/api/total', (req, res) => {
     });
 });
 
-app.post('/api/checkuser', (req, res) => {
-    let id = 1
+app.get("/api/login", (req, res)=>{
+    if (req.session.user){
+        res.send({loggedIn: true, user: req.session.user})
+    }
+    else{
+        res.send({loggedIn: false})
+    }
+})
+
+app.post('/api/login', (req, res) => {
     const username = req.body.username;
-    const sqlGetUser = "SELECT id,password FROM session WHERE username = (?)";
-    db.query(sqlGetUser, [username], (err, result)=>{
-        if (result && result.length > 0){
-            id = parseInt(result[0].id)
-            res.send({id:id});
+    const password = req.body.password;
+    
+    const sqlGetUser = "SELECT * FROM session WHERE username = ? AND password = ?";
+
+    db.query(sqlGetUser, [username, password], (err, result)=>{
+        if (err) {
+            res.send({err:err})
+        }
+        if (result.length > 0){
+            req.session.user = result;
+            res.send(result);
         }
         else{
-            res.send({});
+            res.send({ message: "Incorrect username or password!"})
         }
     });
 });
 
-app.post('/api/newuser', (req, res) => {
+app.post('/api/register', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     total = 0;

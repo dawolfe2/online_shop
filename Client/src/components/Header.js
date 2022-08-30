@@ -8,6 +8,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import Home from './home/home.js';
 
 export default class Header extends React.Component{
 
@@ -40,13 +41,13 @@ export default class Header extends React.Component{
           <h2 className="storename">Dan's Grocery Store</h2>
           <div className="navmenu">
             <p className="navlink">
+              <Link to="/">Login</Link>
+            </p>
+            <p className="navlink">
               <Link to="/store">Shop</Link>
             </p>
             <p className="navlink">
               <Link to="/about">About</Link>
-            </p>
-            <p className="navlink">
-              <Link to="/contact">Contact</Link>
             </p>
           </div>
           <h4 className="cart">Cart:</h4>

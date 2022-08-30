@@ -13,6 +13,9 @@ export default function Body(){
           <Item Item="Peach" Price="4"/>
           <Item Item="Lettuce" Price="3"/>
           <Item Item="Celery" Price="2"/>
+          <Item Item="Broccoli" Price="2"/>
+          <Item Item="Cabbage" Price="5"/>
+          <Item Item="Grapes" Price="4"/>
         </div>
         <div className="column">
           <Item Item="Beef" Price="6"/>
@@ -20,6 +23,9 @@ export default function Body(){
           <Item Item="Steak" Price="6"/>
           <Item Item="Milk" Price="2"/>
           <Item Item="Tea" Price="2"/>
+          <Item Item="Coffee" Price="2"/>
+          <Item Item="Flour" Price="5"/>
+          <Item Item="Bread" Price="4"/>
         </div>
       </div>
   )
