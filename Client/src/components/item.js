@@ -1,15 +1,12 @@
 import React from 'react';
 import './Body.css'
 import Axios from 'axios'
-import { createStore } from 'redux'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 
 //class for shopping item and calculations for quantity and price
 //also has buttons for incrementing to cart
 
 export default class Item extends React.Component{
-
+  
     state ={
         id: 1,
         count: 0,
@@ -18,7 +15,6 @@ export default class Item extends React.Component{
     }
 
     plus = () =>{
-
       this.setState({ count: (this.state.count + 1) })
       this.setState({ total: (parseInt(this.state.total) + parseInt(this.props.Price)) })
       var self = this;
@@ -39,8 +35,7 @@ export default class Item extends React.Component{
           }) 
         }
     }
-
-
+  
   render(){
     return(
       <div className= "item">
