@@ -118,6 +118,10 @@ app.post('/api/register', (req, res) => {
     });
 });
 
+// app.listen(process.end.PORT || PORT, () => {
+//     console.log('running on port ${PORT}');
+// })
+
 app.listen(3001, () => {
     console.log("running on port 3001");
 })
