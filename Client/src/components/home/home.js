@@ -44,6 +44,7 @@ export default function Home(){
                     setUsername(response.data[0].username);
                     setPassword(response.data[0].password);
                     setTotal(response.data[0].total);
+                    window.name=username
                     navigate('/store');
                 }
             })

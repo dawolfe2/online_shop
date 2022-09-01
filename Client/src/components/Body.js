@@ -5,6 +5,7 @@ import Item from './item.js'
 //Create items for the shop, only need to add name of item and price and it will create a new html object
 
 export default function Body(){
+  let total = 0;
   return(
       <div className="MainBody">
         <div className="column">

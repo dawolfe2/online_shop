@@ -13,7 +13,7 @@ import Home from './home/home.js';
 export default class Header extends React.Component{
 
   state ={
-    id: 1,
+    id: Math.floor(Math.random() * 10) + 75,
     username: "Dan",
     password: "asdf",
     total: 0
@@ -38,7 +38,7 @@ export default class Header extends React.Component{
     return(
         <div className="header">
           <img src={logo} className="headerlogo"></img>
-          <h2 className="storename">Dan's Grocery Store</h2>
+          <h2 className="storename">Dan's Store</h2>
           <div className="navmenu">
             <p className="navlink">
               <Link to="/">Login</Link>
@@ -50,7 +50,7 @@ export default class Header extends React.Component{
               <Link to="/about">About</Link>
             </p>
           </div>
-          <h4 className="cart">Cart:</h4>
+          <h4 className="cart">Hi, {} Cart:</h4>
           <h4 className="total">${this.state.total}</h4>
         </div>
     )
