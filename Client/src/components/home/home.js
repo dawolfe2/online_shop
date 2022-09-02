@@ -45,7 +45,6 @@ export default function Home(){
                     setUsername(response.data[0].username);
                     setPassword(response.data[0].password);
                     setTotal(response.data[0].total);
-                    window.name=username
                     navigate('/store');
                 }
             })
@@ -66,14 +65,14 @@ export default function Home(){
         
     }
 
-    useEffect(()=> {
-        // Axios.get("http://localhost:3001/api/login").then((response)=>{
-            Axios.get("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app//api/login").then((response)=>{
-            if(response.data.loggedIn == true){
-                setLoggedin("Logged In");
-            }
-        })
-    }, [])
+    // useEffect(()=> {
+    //     // Axios.get("http://localhost:3001/api/login").then((response)=>{
+    //         Axios.get("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app//api/login").then((response)=>{
+    //         if(response.data.loggedIn == true){
+    //             setLoggedin("Logged In");
+    //         }
+    //     })
+    // }, [])
 
     return(
         <div className="log-form">

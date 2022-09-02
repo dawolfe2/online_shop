@@ -2,12 +2,7 @@ import React from 'react';
 import logo from '../images/D_logo.PNG'
 import './Header.css'
 import Axios from 'axios'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Home from './home/home.js';
 
 export default class Header extends React.Component{
@@ -19,21 +14,21 @@ export default class Header extends React.Component{
     total: 0
   }
 
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      var self = this;
-      // Axios.post("http://localhost:3001/api/total", {
-      Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/total", {
-        id: self.state.id, 
-        }).then(function(response){
-          let newtotal = parseFloat(response.data.total);
-          self.setState({ total: newtotal})
-        })}, 500);
-  }
+  // componentDidMount() {
+  //   this.interval = setInterval(() => {
+  //     var self = this;
+  //     // Axios.post("http://localhost:3001/api/total", {
+  //     Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/total", {
+  //       id: self.state.id, 
+  //       }).then(function(response){
+  //         let newtotal = parseFloat(response.data.total);
+  //         self.setState({ total: newtotal})
+  //       })}, 500);
+  // }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.interval);
+  // }
 
   render(){
     return(
@@ -51,8 +46,6 @@ export default class Header extends React.Component{
               <Link to="/about">About</Link>
             </p>
           </div>
-          <h4 className="cart">Hi, {} Cart:</h4>
-          <h4 className="total">${this.state.total}</h4>
         </div>
     )
   }

@@ -61,3 +61,18 @@
     margin-bottom: 5px;
 }
 
+.cart{
+    position: absolute;
+    margin-left: 1500px;
+    margin-top: 0px;
+}
+
+.checkout{
+    margin-left: 0px;
+    font-size: 18px;
+}
+
+.total{
+
+}
+

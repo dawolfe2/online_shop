@@ -14,14 +14,17 @@ export default class Item extends React.Component{
         username: "Dan"
     }
 
+
     plus = () =>{
       this.setState({ count: (this.state.count + 1) })
       this.setState({ total: (parseInt(this.state.total) + parseInt(this.props.Price)) })
+      this.props.add(this.props.Price);
       var self = this;
-      Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/add", {
-      id: self.state.id, 
-      cost: this.props.Price,
-      }) 
+      // Axios.post("http://localhost:3001/api/total", {
+      // Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/add", {
+      // id: self.state.id, 
+      // cost: this.props.Price,
+      // }) 
     }
     
     minus = () =>{
@@ -29,10 +32,12 @@ export default class Item extends React.Component{
         if(this.state.count!=0){
             this.setState({ count: (this.state.count - 1) })
             this.setState({ total: (parseInt(this.state.total) - parseInt(this.props.Price))})
-            Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/subtract", {
-            id: self.state.id, 
-            cost: this.props.Price,
-          }) 
+            this.props.sub(this.props.Price);
+            // Axios.post("http://localhost:3001/api/total", {
+          //   Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/subtract", {
+          //   id: self.state.id, 
+          //   cost: this.props.Price,
+          // }) 
         }
     }
   
