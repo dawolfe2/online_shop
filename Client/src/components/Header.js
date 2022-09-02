@@ -23,7 +23,7 @@ export default class Header extends React.Component{
     this.interval = setInterval(() => {
       var self = this;
       // Axios.post("http://localhost:3001/api/total", {
-      Axios.post("http://localhost:3001/api/total", {
+      Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/total", {
         id: self.state.id, 
         }).then(function(response){
           let newtotal = parseFloat(response.data.total);
