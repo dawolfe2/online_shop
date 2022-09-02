@@ -31,6 +31,7 @@ export default function Home(){
       const login = () => {
         console.log("asdf")
         if(usernameLog.length > 0 && passwordLog.length > 0){
+            // Axios.post("http://localhost:3001/api/login", { 
             Axios.post("http://localhost:3001/api/login", {   
                 username: usernameLog, 
                 password: passwordLog,
@@ -53,6 +54,7 @@ export default function Home(){
 
      const register = () => {
         if(usernameReg.length > 0 && passwordReg.length > 0){
+            // Axios.post("http://localhost:3001/api/register", {
             Axios.post("http://localhost:3001/api/register", {
                 username: usernameReg, 
                 password: passwordReg,
@@ -65,7 +67,8 @@ export default function Home(){
     }
 
     useEffect(()=> {
-        Axios.get("http://localhost:3001/api/login").then((response)=>{
+        // Axios.get("http://localhost:3001/api/login").then((response)=>{
+            Axios.get("http://localhost:3001/api/login").then((response)=>{
             if(response.data.loggedIn == true){
                 setLoggedin("Logged In");
             }

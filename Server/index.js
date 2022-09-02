@@ -8,13 +8,19 @@ const cookieParser = require('cookie-parser')
 const session = require("express-session")
 
 
-const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'D@ntheman444',
-    database: 'online_shop',
-})
+// const db = mysql.createPool({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'D@ntheman444',
+//     database: 'online_shop',
+// })
 
+const db = mysql.createPool({
+    host: 'us-cdbr-east-06.cleardb.net',
+    user: 'bc5b33dac56f84',
+    password: '43eacd4d',
+    database: 'heroku_4cd45b15278db43',
+})
 
 app.use(cors({
     origin: ["http://localhost:3000"],
@@ -118,10 +124,10 @@ app.post('/api/register', (req, res) => {
     });
 });
 
-// app.listen(process.end.PORT || PORT, () => {
-//     console.log('running on port ${PORT}');
-// })
-
-app.listen(3001, () => {
-    console.log("running on port 3001");
+app.listen(process.env.PORT || PORT, () => {
+    console.log('running on port ${PORT}');
 })
+
+// app.listen(3001, () => {
+//     console.log("running on port 3001");
+// })

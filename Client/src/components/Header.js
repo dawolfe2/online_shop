@@ -13,7 +13,7 @@ import Home from './home/home.js';
 export default class Header extends React.Component{
 
   state ={
-    id: Math.floor(Math.random() * 10) + 75,
+    id: Math.floor(Math.random() * 10) + 1,
     username: "Dan",
     password: "asdf",
     total: 0
@@ -22,6 +22,7 @@ export default class Header extends React.Component{
   componentDidMount() {
     this.interval = setInterval(() => {
       var self = this;
+      // Axios.post("http://localhost:3001/api/total", {
       Axios.post("http://localhost:3001/api/total", {
         id: self.state.id, 
         }).then(function(response){
