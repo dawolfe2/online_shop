@@ -32,7 +32,7 @@ export default function Home(){
         console.log("asdf")
         if(usernameLog.length > 0 && passwordLog.length > 0){
             // Axios.post("http://localhost:3001/api/login", { 
-            Axios.post("http://localhost:3001/api/login", {   
+            Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app/api/login", {   
                 username: usernameLog, 
                 password: passwordLog,
             }).then(function(response){
@@ -55,7 +55,7 @@ export default function Home(){
      const register = () => {
         if(usernameReg.length > 0 && passwordReg.length > 0){
             // Axios.post("http://localhost:3001/api/register", {
-            Axios.post("http://localhost:3001/api/register", {
+            Axios.post("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app//api/register", {
                 username: usernameReg, 
                 password: passwordReg,
             })
@@ -68,7 +68,7 @@ export default function Home(){
 
     useEffect(()=> {
         // Axios.get("http://localhost:3001/api/login").then((response)=>{
-            Axios.get("http://localhost:3001/api/login").then((response)=>{
+            Axios.get("https://6311515a70563b120d6c0d5f--astonishing-flan-9bd6a7.netlify.app//api/login").then((response)=>{
             if(response.data.loggedIn == true){
                 setLoggedin("Logged In");
             }
