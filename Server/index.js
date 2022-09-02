@@ -23,7 +23,8 @@ const db = mysql.createPool({
 })
 
 app.use(cors({
-    origin: ["http://localhost:3000"],
+    // origin: ["http://localhost:3000"],
+    origin: ["http://dw-online-store.herokuapp.com/"],
     methods: ["GET", "POST"],
     credentials: true
 }));
