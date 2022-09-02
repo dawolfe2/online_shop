@@ -1,11 +1,9 @@
 import React, {useEffect, useReducer} from 'react';
 import './Body.css'
 import Item from './item.js'
-import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 //Create items for the shop, only need to add name of item and price and it will create a new html object
-
 
 export default class Body extends React.Component{
 
@@ -59,52 +57,3 @@ export default class Body extends React.Component{
     )
   }
 }
-
-
-
-
-// export default function Body(){
-//   const [redval, forceUpdate] = useReducer(x=>x+1,0);
-
-//   let total = 0;
-
-//   const onAdd = (num) =>{
-//     total = total + num;
-//     forceUpdate()
-//   }
-
-//   const onSub = (num) =>{
-//     total = total - num;
-//     forceUpdate()
-//   }
-  
-//   useEffect(() => {
-//     total = total;
-//   }, [redval] )
-  
-//   return(
-//       <div className="MainBody">
-//         <div className="column">
-//           <Item Item="Apple" Price="1" add={onAdd} sub={onSub}/>
-//           <Item Item="Banana" Price="2" add={onAdd} sub={onSub}/>
-//           <Item Item="Peach" Price="4" add={onAdd} sub={onSub}/>
-//           <Item Item="Lettuce" Price="3" add={onAdd} sub={onSub}/>
-//           <Item Item="Celery" Price="2" add={onAdd} sub={onSub}/>
-//           <Item Item="Broccoli" Price="2" add={onAdd} sub={onSub}/>
-//           <Item Item="Cabbage" Price="5" add={onAdd} sub={onSub}/>
-//           <Item Item="Grapes" Price="4" add={onAdd} sub={onSub}/>
-//         </div>
-//         <div className="column">
-//           <Item Item="Beef" Price="6" add={onAdd} sub={onSub}/>
-//           <Item Item="Chicken" Price="5" add={onAdd} sub={onSub}/>
-//           <Item Item="Steak" Price="6" add={onAdd} sub={onSub}/>
-//           <Item Item="Milk" Price="2" add={onAdd} sub={onSub}/>
-//           <Item Item="Tea" Price="2" add={onAdd} sub={onSub}/>
-//           <Item Item="Coffee" Price="2" add={onAdd} sub={onSub}/>
-//           <Item Item="Flour" Price="5" add={onAdd} sub={onSub}/>
-//           <Item Item="Bread" Price="4" add={onAdd} sub={onSub}/>
-//         </div>
-//         <h2>{total}</h2>
-//       </div>
-//   )
-// }

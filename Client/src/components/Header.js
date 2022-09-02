@@ -1,9 +1,7 @@
 import React from 'react';
 import logo from '../images/D_logo.PNG'
 import './Header.css'
-import Axios from 'axios'
 import { Link } from 'react-router-dom';
-import Home from './home/home.js';
 
 export default class Header extends React.Component{
 
